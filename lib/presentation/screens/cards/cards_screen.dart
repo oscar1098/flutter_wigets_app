@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-const cards = <Map<String,dynamic>> [
-  {'elevation' : 0.0, 'label' : 'Elebation 0'},
-  {'elevation' : 1.0, 'label' : 'Elebation 1'},
-  {'elevation' : 2.0, 'label' : 'Elebation 2'},
-  {'elevation' : 3.0, 'label' : 'Elebation 3'},
-  {'elevation' : 4.0, 'label' : 'Elebation 4'},
-  {'elevation' : 5.0, 'label' : 'Elebation 5'},
+const cards = <Map<String,dynamic>>[
+  { 'elevation': 0.0, 'label': 'Elevation 0' },
+  { 'elevation': 1.0, 'label': 'Elevation 1' },
+  { 'elevation': 2.0, 'label': 'Elevation 2' },
+  { 'elevation': 3.0, 'label': 'Elevation 3' },
+  { 'elevation': 4.0, 'label': 'Elevation 4' },
+  { 'elevation': 5.0, 'label': 'Elevation 5' },
 ];
+
+
+
+
 
 class CardsScreen extends StatelessWidget {
 
@@ -21,13 +25,13 @@ class CardsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Cards Screen'),
       ),
-      body: const _Cardsiew(),
+      body: const _CardsView(),
     );
   }
 }
 
-class _Cardsiew extends StatelessWidget {
-  const _Cardsiew();
+class _CardsView extends StatelessWidget {
+  const _CardsView();
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +39,23 @@ class _Cardsiew extends StatelessWidget {
       child: Column(
         children: [
           
-          ...cards.map((card) => _CardType1(label: card['label'], elevation: card['elevation'])),
+          ...cards.map( 
+            (card) => _CardType1( elevation: card['elevation'], label: card['label'] ),
+          ),
 
-          ...cards.map((card) => _CardType2(label: card['label'], elevation: card['elevation'])),
+          ...cards.map( 
+            (card) => _CardType2( elevation: card['elevation'], label: card['label'] ),
+          ),
 
-          ...cards.map((card) => _CardType3(label: card['label'], elevation: card['elevation'])),
+          ...cards.map( 
+            (card) => _CardType3( elevation: card['elevation'], label: card['label'] ),
+          ),
 
-          ...cards.map((card) => _CardType4(label: card['label'], elevation: card['elevation'])),
-
-          const SizedBox( height: 10 )
-    
+          ...cards.map( 
+            (card) => _CardType4( elevation: card['elevation'], label: card['label'] ),
+          ),
+          
+          const SizedBox(height: 50 ),
         ],
       ),
     );
@@ -73,14 +84,16 @@ class _CardType1 extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
-                icon: const Icon(Icons.accessible_sharp),
+                icon: const Icon( Icons.more_vert_outlined),
                 onPressed: () {},
               ),
-              ),
+            ),
+
             Align(
               alignment: Alignment.bottomLeft,
               child: Text( label ),
             )
+
           ],
         ),
       ),
@@ -106,7 +119,7 @@ class _CardType2 extends StatelessWidget {
 
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all( Radius.circular(12) ),
         side: BorderSide(
           color: colors.outline
         )
@@ -119,20 +132,23 @@ class _CardType2 extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
-                icon: const Icon(Icons.accessible_sharp),
+                icon: const Icon( Icons.more_vert_outlined),
                 onPressed: () {},
               ),
-              ),
+            ),
+
             Align(
               alignment: Alignment.bottomLeft,
-              child: Text( '$label - outline' ),
+              child: Text('$label - outline'),
             )
+
           ],
         ),
       ),
     );
   }
 }
+
 
 
 class _CardType3 extends StatelessWidget {
@@ -160,20 +176,24 @@ class _CardType3 extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
-                icon: const Icon(Icons.accessible_sharp),
+                icon: const Icon( Icons.more_vert_outlined),
                 onPressed: () {},
               ),
-              ),
+            ),
+
             Align(
               alignment: Alignment.bottomLeft,
-              child: Text( '$label - filled' ),
+              child: Text('$label - Filled'),
             )
+
           ],
         ),
       ),
     );
   }
 }
+
+
 
 class _CardType4 extends StatelessWidget {
 
@@ -188,6 +208,8 @@ class _CardType4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final colors = Theme.of(context).colorScheme;
+
     return Card(
       clipBehavior: Clip.hardEdge,
       elevation: elevation,
@@ -195,28 +217,33 @@ class _CardType4 extends StatelessWidget {
         children: [
 
           Image.network(
-            'https://picsum.photos/id/${elevation.toInt()}/600/500',
-            height: 500,
+            'https://picsum.photos/id/${ elevation.toInt() }/600/350',
+            height: 350,
             fit: BoxFit.cover,
           ),
+
 
           Align(
             alignment: Alignment.topRight,
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20))
+                borderRadius: BorderRadius.only( bottomLeft: Radius.circular(20) )
               ),
               child: IconButton(
-                icon: const Icon(Icons.accessible_sharp),
+                icon: const Icon( Icons.more_vert_outlined),
                 onPressed: () {},
               ),
             ),
-            ),
+          ),
+
+
         ],
       ),
     );
   }
 }
+
+
 
 
